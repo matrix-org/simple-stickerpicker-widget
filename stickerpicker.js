@@ -18,7 +18,8 @@ let widgetId = null; // to be populated on the first `toWidget` request.
 
 // First we need to set up a listener to ensure we're able to hear the client's requests
 window.onmessage = function(event) {
-    // Do some security checks first: is this coming from a valid source?
+    // First make sure we are roughly in shape to be a widget: we need a parent window to
+    // make sure it's not another tab trying to contact us.
     if (!window.parent) return;
 
     // Next we validate to make sure the request is a valid shape
